@@ -1,0 +1,39 @@
+LOGIN FORM:
+By.id("user-name")
+By.id("password")
+By.className("btn_action")
+By.className("error-button")
+
+
+LEFT MENU:
+By.xpath("//button[contains(text(),'Open Menu')]")
+By.xpath("//button[contains(text(),'Close Menu')]")
+By.id("page_wrapper")
+By.id("about_sidebar_link")
+By.id("logout_sidebar_link")
+By.id("reset_sidebar_link")
+
+
+CATALOG:
+By.xpath("//div[contains(text(),'Sauce Labs Backpack')]")
+By.className("inventory_details_back_button")
+By.xpath("//div[@class='inventory_list']/div[1]//button[text()='ADD TO CART']")
+By.xpath("//div[@class='inventory_list']/div[2]//button[text()='ADD TO CART']")
+By.xpath("//div[@class='inventory_list']/div[3]//button[text()='ADD TO CART']")
+By.xpath("//div[@class='inventory_list']/div[4]//button[text()='ADD TO CART']")
+By.xpath("//div[@class='inventory_list']/div[5]//button[text()='ADD TO CART']")
+By.xpath("//div[@class='inventory_list']/div[6]//button[text()='ADD TO CART']")
+By.xpath("//*[text()='Sauce Labs Backpack']/../../..//button[text()='ADD TO CART']")             //Add to cart by product name
+By.xpath("//*[text()='Sauce Labs Backpack']/../../..//button[text()='REMOVE']"))                 //Remove by product name
+
+
+SHOPPING CART:
+By.tagName("path")
+By.linkText("CHECKOUT")
+By.className("btn_secondary")
+By.className("btn_secondary cart_button")
+By.xpath("//button[contains(text(),'REMOVE')]")
+
+
+
+
