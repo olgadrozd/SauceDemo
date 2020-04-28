@@ -10,6 +10,7 @@ public class CartPage extends BasePage {
     private String productPriceLocator = "//*[contains(text(),'%s')]/../../..//div[@class='inventory_item_price']";
     private static final By CART_ITEM = By.cssSelector(".cart_item");
     private static final String CART_URL = "https://www.saucedemo.com/cart.html";
+    private static final By CHECKOUT_BUTTON = By.cssSelector(".checkout_button");
 
     public CartPage(WebDriver driver) {
         super(driver);
@@ -17,6 +18,10 @@ public class CartPage extends BasePage {
 
     public void openPage() {
         driver.get(CART_URL);
+    }
+
+    public void clickCheckoutButton() {
+        driver.findElement(CHECKOUT_BUTTON).click();
     }
 
     public void validateNumberOfProduct(int number) {
