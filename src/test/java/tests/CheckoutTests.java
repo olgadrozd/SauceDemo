@@ -8,7 +8,7 @@ public class CheckoutTests extends BaseTest {
     public void checkoutWithEmptyFields (){
         checkoutPage.openPage();
         checkoutPage.clickContinueButton();
-        checkoutPage.checkErrorMessage();
+        checkoutPage.checkErrorMessage("Error: First Name is required");
     }
 
     @Test
@@ -17,7 +17,7 @@ public class CheckoutTests extends BaseTest {
         checkoutPage.fillContinueForm("Olga", "Drozd", "Code123");
         checkoutPage.clickContinueButton();
         checkoutPage.clickFinishButton();
-        checkoutPage.checkConfirmationMessage();
+        checkoutPage.checkConfirmationMessage("THANK YOU FOR YOUR ORDER");
     }
 
     @Test
@@ -25,7 +25,7 @@ public class CheckoutTests extends BaseTest {
         checkoutPage.openPage();
         checkoutPage.fillContinueForm("Olga", "Drozd", "Code123");
         checkoutPage.clickContinueButton();
-        checkoutPage.checkOfAmountsWithoutProducts();
+        checkoutPage.checkOfAmountsWithoutProducts("Item total: $0","Tax: $0.00", "Total: $0.00");
     }
 
     @Test
@@ -39,7 +39,7 @@ public class CheckoutTests extends BaseTest {
         cartPage.clickCheckoutButton();
         checkoutPage.fillContinueForm("Olga", "Drozd", "Code123");
         checkoutPage.clickContinueButton();
-        checkoutPage.checkOfAmountsWithProducts();
+        checkoutPage.checkOfAmountsWithProducts("Item total: $49.99", "Tax: $4.00", "Total: $53.99");
     }
 
     @Test
@@ -47,7 +47,7 @@ public class CheckoutTests extends BaseTest {
         checkoutPage.openPage();
         checkoutPage.fillContinueForm("Ivan","Ivanov", "");
         checkoutPage.clickContinueButton();
-        checkoutPage.checkErrorMessageIfEmptyZipcode();
+        checkoutPage.checkErrorMessageIfEmptyZipcode("Error: Postal Code is required");
     }
 
     @Test
@@ -55,7 +55,7 @@ public class CheckoutTests extends BaseTest {
         checkoutPage.openPage();
         checkoutPage.fillContinueForm("Ivan","", "123");
         checkoutPage.clickContinueButton();
-        checkoutPage.checkErrorMessageIfEmptyLastName();
+        checkoutPage.checkErrorMessageIfEmptyLastName("Error: Last Name is required");
     }
 
 }
