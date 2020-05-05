@@ -13,4 +13,6 @@ public class SauceDemoTest extends BaseTest {
         cartPage.validateNumberOfProduct(1);
         cartPage.validateProductDetails("Sauce Labs Fleece Jacket", 1, 49.99);
     }
+
+
 }
