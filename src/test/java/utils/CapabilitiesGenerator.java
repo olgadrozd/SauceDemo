@@ -2,9 +2,6 @@ package utils;
 
 import org.openqa.selenium.chrome.ChromeOptions;
 
-
-        import org.openqa.selenium.chrome.ChromeOptions;
-
 /**
  * Class presents functionality for generation of {@link org.openqa.selenium.remote.DesiredCapabilities} object
  * need for some browsers start
