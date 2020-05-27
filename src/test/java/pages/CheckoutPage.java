@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -22,39 +23,47 @@ public class CheckoutPage extends BasePage {
     public CheckoutPage(WebDriver driver) {
         super(driver);
     }
+
+    @Step("Открытие страницы")
     public void openPage() {
         driver.get(CHECKOUT_URL_STEP_ONE);
     }
 
+    @Step("Нажатие на кнопку CONTINUE")
     public void clickContinueButton (){
         driver.findElement(CONTINUE_BUTTON).click();
     }
 
+    @Step("Нажатие на кнопку FINISH")
     public void clickFinishButton (){
         driver.findElement(FINISH_BUTTON).click();
     }
 
+    @Step("Проверка текста сообщения об ошибке при нажатии на чекаут с пустыми полями")
     public void checkErrorMessage (String errorMessage){
         String actualErrorMessage = driver.findElement(ERROR_BUTTON).getText();
         Assert.assertEquals(actualErrorMessage,errorMessage,"Неверное сообщение об ошибке при нажатии на чекаут с пустыми полями");
     }
-
+    @Step("Проверка текста сообщения об ошибке при нажатии на чекаут с пустым ZIP")
     public void checkErrorMessageIfEmptyZipcode (String errorButtonMessageWithoutZip){
         String actualErrorMessage = driver.findElement(ERROR_BUTTON).getText();
-        Assert.assertEquals(actualErrorMessage,errorButtonMessageWithoutZip,"Неверное сообщение об ошибке при нажатии на чекаут с пустыми ZIP");
+        Assert.assertEquals(actualErrorMessage,errorButtonMessageWithoutZip,"Неверное сообщение об ошибке при нажатии на чекаут с пустым ZIP");
     }
 
+    @Step("Проверка текста сообщения об ошибке при нажатии на чекаут с пустым полем фамилия")
     public void checkErrorMessageIfEmptyLastName (String errorButtonMessageLastname){
         String actualErrorMessage = driver.findElement(ERROR_BUTTON).getText();
         Assert.assertEquals(actualErrorMessage,errorButtonMessageLastname,"Неверное сообщение об ошибке при нажатии на чекаут с пустой фамилией");
     }
 
+    @Step("Заполнение формы данными Имя, Фамилия, ZIP code")
     public void fillContinueForm (String firstName, String lastName, String zipCode ) {
         driver.findElement(FIRST_INPUT).sendKeys(firstName);
         driver.findElement(LAST_INPUT).sendKeys(lastName);
         driver.findElement(ZIP_POSTAL_CODE).sendKeys(zipCode);
     }
 
+    @Step("Заполнение формы данными Имя, Фамилия, ZIP code")
     public void checkOfAmountsWithoutProducts (String itemTotal, String taxes, String total){
         String actualItemTotal= driver.findElement(ITEM_TOTAL_ACTUAL).getText();
         Assert.assertEquals(actualItemTotal, itemTotal,"Неверная стоимость продукта");
@@ -65,13 +74,13 @@ public class CheckoutPage extends BasePage {
         String actualTotal = driver.findElement(SUMMARY_TOTAL_ACTUAL).getText();
         Assert.assertEquals(actualTotal, total,"Неверная итоговая стоимость заказа");
     }
-
+    @Step("Проверка сообщения на странице подтверждения")
     public void checkConfirmationMessage (String confirmationHeaderMessage){
 
         String actualConfirmationMessage = driver.findElement(CONFIRMATION_HEADER).getText();
         Assert.assertEquals(actualConfirmationMessage,confirmationHeaderMessage,"Сообщение на странице подтверждения не соответсвует ожидаемому");
     }
-
+    @Step("Проверка сумм в корзине")
     public void checkOfAmountsWithProducts (String itemTotal, String taxes, String total){
         String actualItemTotal= driver.findElement(ITEM_TOTAL_ACTUAL).getText();
         Assert.assertEquals(actualItemTotal,itemTotal,"Неверная стоимость продукта");

@@ -1,4 +1,5 @@
 package pages;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -16,18 +17,22 @@ public class CartPage extends BasePage {
         super(driver);
     }
 
+    @Step("Открытие страницы")
     public void openPage() {
         driver.get(CART_URL);
     }
 
+    @Step("Нажатие на кнопку CHECKOUT")
     public void clickCheckoutButton() {
         driver.findElement(CHECKOUT_BUTTON).click();
     }
 
+    @Step("Проверка кол-ва элементов в корзине")
     public void validateNumberOfProduct(int number) {
         Assert.assertEquals(driver.findElements(CART_ITEM).size(), number, "Количество элементов в корзине неверное");
     }
 
+    @Step("Проверка деталей добавленного продукта")
     public void validateProductDetails(String productName, int quantity, double price) {
         String actualQuantity = driver.findElement(
                 By.xpath(String.format(productQuantityLocator, productName))).getText();
