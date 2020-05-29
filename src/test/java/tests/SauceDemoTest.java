@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 public class SauceDemoTest extends BaseTest {
 
 
-    @Test
+    @Test (description="Логин + добавление продукта в корзину + проверка информации о добавленном продукте")
     public void loginTest () {
         loginPage.openPage();
         loginPage.login("standard_user","secret_sauce");
